@@ -18,9 +18,11 @@
 
 ## Action
 ### Hypothesis Testing <BR>
+* This is part of Hypothesis Testing <BR>
 ![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Hypothesis.jpg)
 
 ### Confusion Maxtrix <BR>
+* Confusion Matrix of the best model (Logistic model) <BR>
 ![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Confusion%20Matrix.png)
 
 ### Best-Worst Scenario Analysis <BR>
@@ -30,7 +32,7 @@
 | **Cost \($\)**                   | 4,000         | 7,645          |
 | **Time to fill a position \(days\)** | 42        | 52             |
 
-Testing the model using a data set containing 294 records, it was able to correctly identify 34 (True Positives) and miss 13 (False Negatives) from a total of 47 employees who tend to leave. Translating to the best-worst scenario, this means:
+* Testing the model using a data set containing 294 records, it was able to correctly identify 34 (True Positives) and miss 13 (False Negatives) from a total of 47 employees who tend to leave. Translating to the best-worst scenario, this means:
 
 |                                  | Best scenario | Worst scenario |
 |----------------------------------|---------------|----------------|
@@ -38,9 +40,10 @@ Testing the model using a data set containing 294 records, it was able to correc
 | **Total time saved \(days\)**    | 1428          | 1768           |
 
 
-In addition, **without the model**, the company would have 47 employees that could leave, translating it to **a total loss of \$ 188,000 in the best scenario and \$ 359,315 in the worst scenario**.
+* In addition, **without the model**, the company would have 47 employees that could leave, translating it to **a total loss of \$ 188,000 in the best scenario and \$ 359,315 in the worst scenario**.
 
 ### Top Five Factors
+* Top five factors of employee attrition <BR>
 ![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Top%20Five%20Factors.jpg)
 
 
