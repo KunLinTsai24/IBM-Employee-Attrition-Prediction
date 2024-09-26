@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-IBM is facing a significant challenge with employee attrition, which is costly in terms of financial resources, lost knowledge, and decreased productivity. In 2019, U.S. businesses lost a trillion dollars annually due to voluntary turnover, with over 40 million workers, or 26.9% of the workforce, quitting their jobs in 2018. For IBM, reducing attrition is critical for maintaining competitiveness and sustainability. This project focuses on identifying key factors driving employee attrition and developing a predictive model using Python to help IBM proactively manage and reduce turnover efficiently.
+IBM is facing a significant challenge with employee attrition, which is costly in terms of financial resources, lost knowledge, and decreased productivity. In 2019, U.S. businesses lost a trillion dollars annually due to voluntary turnover, with over 40 million workers, or 26.9% of the workforce, quitting their jobs in 2018. For IBM, reducing attrition is critical for maintaining competitiveness and sustainability. This project focuses on identifying key factors driving employee attrition and developing a predictive model using **Python** to help IBM proactively manage and reduce turnover efficiently.
 
 A **best-worst scenario** for an employee who leaves a company.
 
