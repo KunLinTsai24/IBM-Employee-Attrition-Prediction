@@ -1,52 +1,111 @@
 # IBM Employee Attrition Prediction
 
-## Summary
-* The data originates from IBM's HR department. I utilize this dataset to determine the key factors contributing to employee turnover. To identify these factors, I formulate hypotheses for each and employ SPSS for statistical analysis, using the chi-square test for categorical variables and the independent sample t-test for continuous ones. The statistical findings provide insights into the reasons for attrition. I've processed the data for all variables. Continuous variables are standardized to negate the impact of varying scales. For binary categorical variables, I apply one-hot encoding, and for those with more than two levels, I use frequency encoding. This encoding simplifies the model. I then employ these factors to develop various machine learning models such as logistic regression, LDA, KNN, random forest, and decision tree. After partitioning the data into training and test sets, I  address the issue of imbalanced samples to mitigate potential biases. The optimal model is chosen based on a confusion matrix that maximizes true positives and minimizes false negatives, indicating its superior predictive capability for identifying potential departures. The logistic regression model proves to be the best. Using the true positive rate, I estimate the potential cost and time savings for IBM. Ultimately, the model could result in savings ranging from 136,000 to 259,930 and a time reduction of 1,428 to 1,768 days.
+## **Introduction**
 
-## Situation
-* In mid-2019, Gallup reported that U.S. businesses were losing a trillion dollars annually due to voluntary employee turnover. The U.S. Bureau of Labor Statistics also highlighted that over 40 million American workers, representing 26.9% of the workforce, quit their jobs in 2018. For individual organizations, the cost of replacing an employee can be significant, ranging from half to twice the employee's annual salary.
-* A **best-worst scenario** for an employee who leaves a company.
+IBM is facing a significant challenge with employee attrition, which is costly in terms of financial resources, lost knowledge, and decreased productivity. In 2019, U.S. businesses lost a trillion dollars annually due to voluntary turnover, with over 40 million workers, or 26.9% of the workforce, quitting their jobs in 2018. For IBM, reducing attrition is critical for maintaining competitiveness and sustainability. This project focuses on identifying key factors driving employee attrition and developing a predictive model using Python to help IBM proactively manage and reduce turnover efficiently.
 
-|                                  | Best scenario | Worst scenario |
-|----------------------------------|---------------|----------------|
-| **Cost \($\)**                       | 4,000          | 7,645           |
-| **Time to fill a position \(days\)** | 42            | 52             |
+A **best-worst scenario** for an employee who leaves a company.
 
-## Task
-* The primary objective was to determine the factors that cause attrition and build a machine learning model to identify employees most likely to leave. This would help in curbing turnover costs and ensuring a more engaged workforce.
-* When building a machine learning model, I focus on **sensitivity** and then **classification error**, that is, **minimizing the False Negatives while maximizing the True Positives**.
+|     | Best Scenario | Worst Scenario |
+| --- | --- | --- |
+| Cost ($) | 4,000 | 7,645 |
+| Time to fill a position (days) | 42  | 52  |
 
-## Action
-### Hypothesis Testing <BR>
-* This is part of Hypothesis Testing <BR>
-![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Hypothesis.jpg)
+---
 
-### Confusion Maxtrix <BR>
-* Confusion Matrix of the best model (Logistic model) <BR>
-![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Confusion%20Matrix.png)
+## **Business Requirement**
 
-### Best-Worst Scenario Analysis <BR>
+1. **Best Performance Model**: The goal was to find the most effective model to predict employee attrition. The model's success was defined by its ability to identify employees who are likely to leave the company, with a focus on maximizing the recall score and, in cases where recall scores are identical, the accuracy score.
+2. **Identify Key Attrition Factors**: Understanding the most important factors that contribute to employee attrition is essential for developing strategies to reduce turnover and save the company time and resources.
 
-|                                  | Best scenario | Worst scenario |
-|----------------------------------|---------------|----------------|
-| **Cost \($\)**                   | 4,000         | 7,645          |
-| **Time to fill a position \(days\)** | 42        | 52             |
+---
 
-* Testing the model using a data set containing 294 records, it was able to correctly identify 34 (True Positives) and miss 13 (False Negatives) from a total of 47 employees who tend to leave. Translating to the best-worst scenario, this means:
+## **Process Outline**
 
-|                                  | Best scenario | Worst scenario |
-|----------------------------------|---------------|----------------|
-| **Total loss prevented \($\)**   | 136000        | 259930         |
-| **Total time saved \(days\)**    | 1428          | 1768           |
+### **Data Cleaning**
+
+- Renamed columns to lowercase.
+- Dropped unnecessary columns: 'employee_count', 'employee_number', 'job_role', 'standard_hours', 'over18'.
+- Transformed categorical columns using frequency encoding: 'business_travel', 'department', 'education', 'education_field', 'marital_status'.
+- Applied binary encoding to binary columns: 'gender', 'attrition', 'overtime'.
+
+### **Prepare for Modeling**
+
+1. **Splitting Data**: The dataset was split into features and labels, with the features consisting of all columns except attrition, and the labels being the attrition column. The data was then divided into training and testing sets.
+2. **Balancing Data**: To address the imbalance in the attrition label, SMOTE was used to balance the label variable.
+3. **Scaling Data:** StandardScaler() was applied to standardize the data due to differences in scale across features.
+
+### **Modelling**
+
+1. Five common classification models were used: KNN, Logistic Regression, Decision Trees, Random Forests, and Gradient Boosting.
+2. GridSearchCV() was used for hyperparameter tuning to identify the best parameters for each model based on average recall scores.
+3. Precision-recall curves and confusion matrices were analyzed to assess model performance, focusing on maximizing recall and accuracy scores.
+4. The best-performing model, **Logistic Regression**, was selected based on its recall and accuracy scores.
+
+![]()
+
+### **Top 5 Feature**
+
+1. After identifying Logistic Regression as the best model, feature importance was determined based on the model's coefficients.
+2. Feature importance was visualized using heatmaps and bar charts for better understanding.
+
+![]()
+
+![]()
+
+---
+
+## **Conclusion**
+
+### **Key findings**
+
+- **Best Model:** The **Logistic Regression model** outperformed others with a recall score of 0.69 and an accuracy score of 0.76.
 
 
-* In addition, **without the model**, the company would have 47 employees that could leave, translating it to **a total loss of \$ 188,000 in the best scenario and \$ 359,315 in the worst scenario**.
+| Model | Recall | Accuracy |
+| --- | --- | --- |
+| KNN | 0.61 | 0.71 |
+| **Logistic** | **0.69** | **0.76** |
+| Decision Tree | 0.67 | 0.51 |
+| Random Forest | 0.69 | 0.63 |
+| Gradient Boosting | 0.67 | 0.67 |
+<br>
 
-### Top Five Factors
-* Top five factors of employee attrition <BR>
-![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/Top%20Five%20Factors.jpg)
+- **Top 5 Feature**
+  - **Stock Option Level**: lower the option level, higher the possibility to leave the company.
+  - **Job Involvement**: lower the job involvement, higher the possibility to leave the company.
+  - **Job Level**: lower the job level, higher the possibility to leave the company.
+  - **Job Satisfaction**: lower the job satisfaction, higher the possibility to leave the company.
+  - **Environment Satisfaction**: lower the environment satisfaction, higher the possibility to leave the company.
 
 
-## Result
-* The best model is the logistic regression model, which could result in savings ranging from 136,000 to 259,930 and a time reduction of 1,428 to 1,768 days.
-* The top five factors are monthly income, age, total working years, distance from home, and years at the company.
+| Feature | Coefficient |
+| --- | --- |
+| Stock Option Level | \-0.69 |
+| Job Involvement | \-0.60 |
+| Job Level | \-0.58 |
+| Job Satisfaction | \-0.54 |
+| Environment Satisfaction | \-0.51 |
+<br>
+
+- **Business Value**
+  - The model was tested on a dataset containing 294 records, successfully identifying 27 true positives and missing 12 false negatives, indicating its effectiveness in predicting employee attrition.
+  - Translating to the best-worst scenario, this means:
+
+|     | Best Scenario | Worst Scenario |
+| --- | --- | --- |
+| Total Loss Prevented ($) | 108,000 | 206,415 |
+| Total Time Saved (days) | 1,134 | 1,404 |
+<br>
+
+### **Next Steps**
+
+- **Enhance Stock Option Levels**: Employees with lower stock option levels are more likely to leave. Increasing stock options or providing alternative financial incentives could help retain these employees.
+- **Promote Career Advancement**: Lower job levels correlate with higher attrition. IBM could address this by creating clearer career progression paths and ensuring that employees are aware of opportunities for advancement within the company.
+- **Improve Overall Employee Engagement**: Job involvement, satisfaction, and environment are key to reducing attrition. IBM should enhance engagement by offering more responsibility, recognizing contributions, and providing professional development. Additionally, fostering a supportive work environment and improving work-life balance will boost satisfaction and reduce turnover.
+
+---
+
+## **Learning Outcome**
+
+Throughout this project, I gained valuable insights into the process of data analysis and machine learning, particularly in the context of employee attrition. I learned how to clean and preprocess data, including techniques such as frequency encoding, binary encoding, and data scaling. I also deepened my understanding of machine learning models by applying five different classification algorithms: K-Nearest Neighbors (KNN), Logistic Regression, Decision Trees, Random Forests, and Gradient Boosting. Using GridSearchCV for hyperparameter tuning was a particularly enlightening experience, as it helped me to identify the optimal settings for each model to maximize performance. Additionally, I learned how to interpret model outputs, such as confusion matrices and precision-recall curves, to select the most effective model for predicting employee attrition.
