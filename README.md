@@ -42,16 +42,15 @@ A **best-worst scenario** for an employee who leaves a company.
 3. Precision-recall curves and confusion matrices were analyzed to assess model performance, focusing on maximizing recall and accuracy scores.
 4. The best-performing model, **Logistic Regression**, was selected based on its recall and accuracy scores.
 
-![]()
+![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/confusion%20matrix.png)
 
 ### **Top 5 Feature**
 
 1. After identifying Logistic Regression as the best model, feature importance was determined based on the model's coefficients.
 2. Feature importance was visualized using heatmaps and bar charts for better understanding.
 
-![]()
-
-![]()
+![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/heatmap.png)
+![](https://github.com/KunLinTsai24/IBM-Employee-Attrition-Prediction/blob/main/img/bar%20chart.png)
 
 ---
 
